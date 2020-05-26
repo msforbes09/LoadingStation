@@ -24,12 +24,18 @@ class TransactionController extends Controller
 
     public function loadCustomer(Request $request)
     {
-        $customer = Customer::find(request('customer_id'));
+        $request->validate([
+            'date' => 'required|date',
+            'customer_id' => 'required|exists:customers,id',
+            'amount' => 'required|numeric',
+            'rebate' => 'required|numeric',
+        ]);
 
-        $transaction = $customer->transactions()->create([
-            'date' => request('date'),
-            'amount' => request('amount'),
-            'balance' => 1000, //test data
+        Customer::find(request('customer_id'))
+            ->transactions()->create([
+                'date' => request('date'),
+                'amount' => request('amount'),
+                'rebate' => request('rebate'),
         ]);
 
         return redirect()->route('transaction.index');

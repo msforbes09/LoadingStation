@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->morphs('transactable');
             $table->date('date');
             $table->decimal('amount', 8, 2);
+            $table->decimal('rebate', 8, 2)->nullable();
             $table->decimal('balance', 8, 2);
             $table->boolean('posted')->default(0);
             $table->timestamps();

@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <h1>Transactions</h1>
-    <a href="{{ route('transaction.loadCustomer') }}">Create</a>
+    <a href="{{ route('transaction.loadCustomer') }}">Load Customer</a>
 
     <table>
         <tr>
@@ -13,6 +13,7 @@
             <th>Supplier</th>
             <th>Contact</th>
             <th>Amount</th>
+            <th>Rebate</th>
             <th>Balance</th>
         </tr>
 
@@ -39,6 +40,7 @@
                 @endif
 
                 <td>{{ $transaction->amount }}</td>
+                <td>{{ $transaction->rebate }}</td>
                 <td>{{ $transaction->balance }}</td>
             </tr>
         @endforeach

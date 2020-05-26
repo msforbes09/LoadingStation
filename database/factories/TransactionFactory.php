@@ -18,6 +18,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'transactable_id' => $transactable->id,
         'date' => $faker->date,
         'amount' => $faker->randomFloat(2, 10, 200),
+        'rebate' => 0.03,
         'balance' => $faker->randomFloat(2, 1000, 5000),
     ];
 });

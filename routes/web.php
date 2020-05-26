@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/transaction', 'TransactionController@index')->name('transaction.index');
-Route::get('/transaction/customer', 'TransactionController@customer')->name('transaction.customer');
-Route::post('/transaction/customer', 'TransactionController@loadCustomer')->name('transaction.loadCustomer');
+Route::get('/transactions', 'TransactionController@index')->name('transaction.index');
+Route::get('/transactions/customer', 'TransactionController@customer')->name('transaction.customer');
+Route::post('/transactions/customer', 'TransactionController@loadCustomer')->name('transaction.loadCustomer');
