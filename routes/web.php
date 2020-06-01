@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/transactions', 'TransactionController@index')->name('transaction.index');
 Route::get('/transactions/customer', 'TransactionController@customer')->name('transaction.customer');
 Route::post('/transactions/customer', 'TransactionController@loadCustomer')->name('transaction.loadCustomer');
+Route::get('/transactions/credit', 'TransactionController@credit')->name('transaction.credit');
+Route::post('/transactions/credit', 'TransactionController@loadCredit')->name('transaction.loadCredit');

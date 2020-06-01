@@ -25,6 +25,7 @@ class Transaction extends Model
                 $rebate = $transaction->amount * $transaction->rebate;
 
                 $transaction->rebate = $rebate;
+
                 $transaction->balance = self::lastBalance() - ($transaction->amount - $rebate);
             } else {
                 $transaction->balance = self::lastBalance() + $transaction->amount;

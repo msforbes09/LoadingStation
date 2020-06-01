@@ -3,7 +3,8 @@
 @section('content')
 <div>
     <h1>Transactions</h1>
-    <a href="{{ route('transaction.loadCustomer') }}">Load Customer</a>
+    <a href="{{ route('transaction.customer') }}">Load Customer</a>
+    <a href="{{ route('transaction.credit') }}">Load Credit</a>
 
     <table>
         <tr>

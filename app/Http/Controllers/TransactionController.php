@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Supplier;
 use App\Transaction;
 use Illuminate\Http\Request;
 
@@ -41,12 +42,30 @@ class TransactionController extends Controller
         return redirect()->route('transaction.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function credit()
+    {
+        $suppliers = Supplier::get();
+
+        return view('transaction.credit', compact('suppliers'));
+    }
+
+    public function loadCredit(Request $request)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'supplier_id' => 'required|exists:suppliers,id',
+            'amount' => 'required|numeric',
+        ]);
+
+        Supplier::find(request('supplier_id'))
+            ->transactions()->create([
+                'date' => request('date'),
+                'amount' => request('amount'),
+        ]);
+
+        return redirect()->route('transaction.index');
+    }
+
     public function show($id)
     {
         //
